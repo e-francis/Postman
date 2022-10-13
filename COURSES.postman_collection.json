@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "38fe1e03-551e-4085-a7d9-b80c76abf092",
+		"name": "COURSES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20082824"
+	},
+	"item": [
+		{
+			"name": "LIST COURSES",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify if end point staus code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Verify if the response body has the value location\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"location\");",
+							"});",
+							"",
+							"pm.test(\"Check if response header has date\", function () {",
+							"    pm.response.to.have.header(\"Date\");",
+							"});",
+							"",
+							"pm.test(\"Response time is above than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.above(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/courses",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/courses/1263",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"1263"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/courses/541",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"541"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Cypress\",\n    \"categoryId\": 2,\n    \"description\": \"Introduction to postman\",\n    \"courseUrl\": \"https://www.youtube.com/watch?v=8vXoMqWgbQQ\",\n    \"imageUrl\": \"https://unsplash.com/photos/EpX4aQncCWY\",\n    \"location\": \"offline\",\n    \"isPremium\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/courses",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE COURSE",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"Postman update\",\n    \"categoryId\" : 2,\n    \"description\" : \"Postman Course\",\n    \"courseUrl\" : \"https://www.youtube.com/watch?v=8vXoMqWgbQQ\",\n    \"imageUrl\" : \"https://source.unsplash.com/user/c_v_r/900x800\",\n    \"location\": \"online\",\n    \"isPremium\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/courses/1263",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"1263"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
